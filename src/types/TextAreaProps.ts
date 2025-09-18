@@ -11,4 +11,5 @@ export default interface TextAreaProps {
   diffs: TextDifferenceArray;
   isTextAreaActive: boolean;
   setIsTextAreaActive: React.Dispatch<React.SetStateAction<boolean>>;
+  isRefreshButtonActive: boolean;
 }

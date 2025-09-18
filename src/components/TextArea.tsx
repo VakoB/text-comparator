@@ -98,7 +98,7 @@ export default function TextArea(props: TextAreaProps) {
         placeholder="დაიწყე წერა..."
       ></CustomTextArea>
       <CustomTextAreaHighlighter ref={highlighterRef}>
-        {props.diffs &&
+        {props.diffs && props.isRefreshButtonActive &&
           props.diffs?.map(([type, text], index) => {
             if (type === 0 || props.isTextAreaActive) {
               return <span key={index}>{text}</span>;

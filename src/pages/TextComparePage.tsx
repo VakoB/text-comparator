@@ -98,7 +98,7 @@ const RefreshTextareasButton = styled.button<{ isActive: boolean }>`
   }
 
   background-color: ${(props) => (props.isActive ? "#4571E4" : "#383a4899")};
-  
+
   &:hover {
     cursor: ${(props) => (props.isActive ? "pointer" : "default")};
   }
@@ -254,6 +254,7 @@ export default function TextComparePage() {
             diffs={diffs}
             isTextAreaActive={isTextAreaActive}
             setIsTextAreaActive={setIsTextAreaActive}
+            isRefreshButtonActive={isRefreshButtonActive}
           />
           <SwapArrow alt="swap arrow" src={swapArrowIcon} />
           <TextArea
@@ -266,6 +267,7 @@ export default function TextComparePage() {
             diffs={diffs}
             isTextAreaActive={isTextAreaActive}
             setIsTextAreaActive={setIsTextAreaActive}
+            isRefreshButtonActive={isRefreshButtonActive}
           />
         </TextAreas>
       )}
