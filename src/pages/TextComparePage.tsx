@@ -77,7 +77,7 @@ const CompareButtonWrapper = styled.div`
   margin-top: 32px;
 `;
 
-const RefreshTextareasButton = styled.button`
+const RefreshTextareasButton = styled.button<{ isActive: boolean }>`
   width: 150px;
   height: 42px;
   gap: 4px;
@@ -91,10 +91,16 @@ const RefreshTextareasButton = styled.button`
   align-items: center;
   background: none;
   border: none;
-  background-color: #383a4899;
   color: white;
+
   @media (max-width: 417px) {
     width: 100%;
+  }
+
+  background-color: ${(props) => (props.isActive ? "#4571E4" : "#383a4899")};
+  
+  &:hover {
+    cursor: ${(props) => (props.isActive ? "pointer" : "default")};
   }
 `;
 
@@ -193,6 +199,7 @@ export default function TextComparePage() {
   const [isTextAreaActive, setIsTextAreaActive] = useState(false);
   const isCompareButtonClickable = originalText !== "" && changedText !== "";
   const [isLoading, setIsloading] = useState(false);
+  const isRefreshButtonActive = originalText !== "" || changedText !== "";
 
   const comparator = async () => {
     if (!isCompareButtonClickable) return;
@@ -224,7 +231,13 @@ export default function TextComparePage() {
             ფორმატის შენარჩუნება
           </CheckboxWithText>
         </LanguageAndFormatOptions>
-        <RefreshTextareasButton>
+        <RefreshTextareasButton
+          isActive={isRefreshButtonActive}
+          onClick={() => {
+            setChangedText("");
+            setOriginalText("");
+          }}
+        >
           <img src={plus} alt="plus" />
           ახლის გახსნა
         </RefreshTextareasButton>
