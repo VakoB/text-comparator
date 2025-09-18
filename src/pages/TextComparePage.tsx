@@ -194,17 +194,19 @@ export default function TextComparePage() {
   const isCompareButtonClickable = originalText !== "" && changedText !== "";
   const [isLoading, setIsloading] = useState(false);
 
-  const comparator = () => {
-    // setIsloading(true);
+  const comparator = async () => {
+    if (!isCompareButtonClickable) return;
+
+    setIsloading(true);
     setIsTextAreaActive(false);
-    if (!isCompareButtonClickable) {
-      return;
-    }
+
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
     const dmp = new diff_match_patch();
     const difference = dmp.diff_main(originalText, changedText);
-    console.log(diffs);
 
     setDiffs(difference);
+    setIsloading(false);
   };
 
   return (
